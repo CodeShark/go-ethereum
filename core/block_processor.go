@@ -351,7 +351,7 @@ func (sm *BlockProcessor) VerifyUncles(statedb *state.StateDB, block, parent *ty
 		uncles.Add(uncle.Hash())
 
 		if ancestors.Has(uncle.Hash()) {
-			return UncleError("uncle[%d] is ancestor", i)
+			return UncleError("uncle[%d](%x) is ancestor", i, uncle.Hash().Bytes()[:4]);
 		}
 
 		if !ancestors.Has(uncle.ParentHash) {
